@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         
         // animation
         showProgressBar()
-        //progressBar.isHidden = true // to hide only for tests
+    
     }
     
     func showProgressBar(){
@@ -142,7 +142,6 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print(listId.count)
         return listId.count
         
     }
@@ -154,7 +153,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print(listId[indexPath.row])
         fetchListItem(item: listId[indexPath.row])
         performSegue(withIdentifier: "TelaPrincipal", sender: modelList)
     }

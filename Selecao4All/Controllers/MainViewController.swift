@@ -13,16 +13,20 @@ import SDWebImage
 
 class MainViewController: UIViewController {
 
-    @IBOutlet weak var scrollview: UIScrollView!
-    @IBOutlet weak var sectionComments: UIView!
     let defaults = UserDefaults.standard
     var numberOfRows: Int? = 0
+    
+    var locationManager = CLLocationManager()
+    var pinLocations = CLLocation(latitude: -30.0306551, longitude: -51.1846846)
     
     var lists: Lista = Lista(id: "", cidade: "", bairro: "", urlFoto: "", urlLogo: "", titulo: "", telefone: "", texto: "", endereco: "", latitude: 0.0, longitude: 0.0, comentarios: [])
     var modelList: [Lista] = []
     
     var listComment: [Comentario] = []
-    var index: IndexPath?
+    
+    // Outlets
+    @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var sectionComments: UIView!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var appTitle: UINavigationItem!
     @IBOutlet weak var titleMain: UILabel!
@@ -32,16 +36,12 @@ class MainViewController: UIViewController {
     @IBOutlet weak var commentsTableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     
-    var locationManager = CLLocationManager()
-    var pinLocations = CLLocation(latitude: -30.0306551, longitude: -51.1846846)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         // Map on Center
         let lati = defaults.double(forKey: "latitude")
         let longi = defaults.double(forKey: "longitude")
-        //print(lati, longi)
         pinLocations = CLLocation(latitude: lati, longitude: longi)
         
         centerMap(on: pinLocations.coordinate)
@@ -99,13 +99,6 @@ class MainViewController: UIViewController {
         titleMain.text = defaults.string(forKey: "title")
         let urlLogo = URL(string: defaults.string(forKey: "urlLogo")!)
         logo.sd_setImage(with: urlLogo, placeholderImage: UIImage(named: "logo.png"))
-//        DispatchQueue.global(qos: .background).async {
-//            let dataLogo = try? Data(contentsOf: urlLogo!)
-//            //i'm sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-//            DispatchQueue.main.async {
-//                self.logo.image = UIImage(data: dataLogo!)
-//            }
-//        }
         mainText.text = defaults.string(forKey: "mainText")
         labelAddress.text = defaults.string(forKey: "address")
         
@@ -129,11 +122,7 @@ class MainViewController: UIViewController {
     
     
     func showAdressAlert() {
-        // Create the action buttons for the alert.
-        let defaultAction = UIAlertAction(title: "Ok",
-                                          style: .default) { (action) in
-                                            // Respond to user selection of the action.
-        }
+        let defaultAction = UIAlertAction(title: "Ok", style: .default) { (action) in }
         
         // Create and configure the alert controller.
         let alert = UIAlertController(title: "Endereço",
@@ -146,6 +135,7 @@ class MainViewController: UIViewController {
     
 }
 
+// Extension for Centralize and put Pins
 extension MainViewController : MKMapViewDelegate {
     private func centerMap(on coordinate: CLLocationCoordinate2D) {
         let region = MKCoordinateRegion(center: coordinate,
@@ -197,3 +187,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+
+// Code to pick up image from URL and parse into ImageView without Pods
+//        DispatchQueue.global(qos: .background).async {
+//            let dataLogo = try? Data(contentsOf: urlLogo!)
+//            //i'm sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+//            DispatchQueue.main.async {
+//                self.logo.image = UIImage(data: dataLogo!)
+//            }
+//        }
+

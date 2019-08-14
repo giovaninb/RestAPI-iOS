@@ -17,7 +17,6 @@
 		ADB09A5522FB2D3F00134F1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADB09A5322FB2D3F00134F1F /* LaunchScreen.storyboard */; };
 		ADB09A5E22FB391A00134F1F /* Lista.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB09A5D22FB391A00134F1F /* Lista.swift */; };
 		ADB09A6422FC81BC00134F1F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB09A6322FC81BC00134F1F /* MainViewController.swift */; };
-		ADB09A6622FCEC6A00134F1F /* ListaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB09A6522FCEC6A00134F1F /* ListaAPI.swift */; };
 		ADB09A6822FF403E00134F1F /* MapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB09A6722FF403E00134F1F /* MapLocation.swift */; };
 		ADB09A6A2301A98E00134F1F /* CommentsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB09A692301A98E00134F1F /* CommentsViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -36,7 +35,6 @@
 		ADB09A5622FB2D3F00134F1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADB09A5D22FB391A00134F1F /* Lista.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lista.swift; sourceTree = "<group>"; };
 		ADB09A6322FC81BC00134F1F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		ADB09A6522FCEC6A00134F1F /* ListaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaAPI.swift; sourceTree = "<group>"; };
 		ADB09A6722FF403E00134F1F /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
 		ADB09A692301A98E00134F1F /* CommentsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentsViewCell.swift; path = Selecao4All/Model/CommentsViewCell.swift; sourceTree = SOURCE_ROOT; };
 		F7F6F3E952BAB36ECDA5D7EB /* Pods_Selecao4All.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Selecao4All.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				ADB09A5D22FB391A00134F1F /* Lista.swift */,
-				ADB09A6522FCEC6A00134F1F /* ListaAPI.swift */,
 				ADB09A6722FF403E00134F1F /* MapLocation.swift */,
 				AD359FDC230432C100A56AEF /* ListaCache.swift */,
 			);
@@ -254,7 +251,6 @@
 				ADB09A5022FB2D3F00134F1F /* Selecao4All.xcdatamodeld in Sources */,
 				ADB09A4822FB2D3F00134F1F /* AppDelegate.swift in Sources */,
 				ADB09A5E22FB391A00134F1F /* Lista.swift in Sources */,
-				ADB09A6622FCEC6A00134F1F /* ListaAPI.swift in Sources */,
 				AD359FDD230432C100A56AEF /* ListaCache.swift in Sources */,
 				ADB09A6422FC81BC00134F1F /* MainViewController.swift in Sources */,
 			);

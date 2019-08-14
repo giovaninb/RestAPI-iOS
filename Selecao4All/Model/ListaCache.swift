@@ -8,7 +8,7 @@
 
 import Foundation
 
-//set, get & remove Comments in cache
+//set, get & remove Lista in cache
 struct ListCache {
     static let key = "userListCache"
     static func save(_ value: Lista!) {

@@ -6,7 +6,6 @@ target 'Selecao4All' do
   use_frameworks!
 
   # Pods for Selecao4All
-  pod 'Alamofire', '~> 5.0.0-beta.5'
   pod 'Cosmos', '~> 19.0'
   pod 'SDWebImage', '~> 5.0'
 
