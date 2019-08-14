@@ -39,6 +39,32 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        
+        // Comments section
+        commentsTableView.delegate = self
+        commentsTableView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("-- didAppear")
+        getData()
+        fetchListItem()
+        
+        // Map on Center
+        let lati = defaults.double(forKey: "latitude")
+        let longi = defaults.double(forKey: "longitude")
+        pinLocations = CLLocation(latitude: lati, longitude: longi)
+        
+        centerMap(on: pinLocations.coordinate)
+        let pinLocals = MapLocation(coordinate: pinLocations.coordinate, title: "")
+        mapView.addAnnotation(pinLocals)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("*********** willAppear")
+        getData()
+        fetchListItem()
+        
         // Map on Center
         let lati = defaults.double(forKey: "latitude")
         let longi = defaults.double(forKey: "longitude")
@@ -48,20 +74,6 @@ class MainViewController: UIViewController {
         let pinLocals = MapLocation(coordinate: pinLocations.coordinate, title: "")
         mapView.addAnnotation(pinLocals)
         
-        // Comments section
-        commentsTableView.reloadData()
-        commentsTableView.delegate = self
-        commentsTableView.dataSource = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("-- didAppear")
-        getData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("*********** willAppear")
-        fetchListItem()
     }
     
     func fetchListItem() {
@@ -92,7 +104,6 @@ class MainViewController: UIViewController {
     
     func getData() {
         print("**** Retrieve data from UserDefaults ****")
-        defaults.string(forKey: "id")
         let urlPhoto = URL(string: defaults.string(forKey: "urlPhoto")!)
         photo.sd_setImage(with: urlPhoto, placeholderImage: UIImage(named: "photo.png"))
         appTitle.title = defaults.string(forKey: "appTitle")
@@ -180,7 +191,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell?.nameUser.text = listComment[indexPath.row].nome
         cell?.commentTitle.text = listComment[indexPath.row].titulo
         cell?.comment.text = listComment[indexPath.row].comentario
-        //cell?.ratingBar
+        cell?.ratingBar.rating = Double(listComment[indexPath.row].nota)
         
         return cell!
     }
